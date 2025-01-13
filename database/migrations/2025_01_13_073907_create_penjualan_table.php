@@ -9,13 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('penjualan', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    public function up()
+{
+    Schema::create('penjualan', function (Blueprint $table) {
+        $table->increments('PenjualanID');
+        $table->date('TanggalPenjualan');
+        $table->decimal('TotalHarga', 10, 2);
+        $table->unsignedInteger('PelangganID');
+        $table->foreign('PelangganID')->references('PelangganID')->on('pelanggan')->onDelete('cascade');
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.
