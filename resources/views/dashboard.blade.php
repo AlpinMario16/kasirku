@@ -1,0 +1,7 @@
+@extends('layouts.layout')
+
+@section('title', 'Dashboard')
+
+@section('content')
+<h1 class="h3 mb-4 text-gray-800">Kasirku</h1>
+@endsection
