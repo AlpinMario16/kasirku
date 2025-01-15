@@ -9,12 +9,13 @@ class UserController extends Controller
 {
     public function index()
     {
-        // Ambil semua data user dari database
-        $users = User::all();
-
+        // Ambil data user dengan pagination 5 per halaman
+        $users = User::paginate(5);
+    
         // Return ke view users.index dengan mengirimkan data $users
         return view('users.index', compact('users'));
     }
+    
 
     public function create()
     {
@@ -87,5 +88,15 @@ class UserController extends Controller
 
         // Redirect ke halaman users.index
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->query('search'); // Ambil nilai pencarian dari query parameter
+        $users = User::where('name', 'like', "%$searchTerm%")
+                     ->orWhere('email', 'like', "%$searchTerm%")
+                     ->get(); // Ambil user yang sesuai dengan pencarian
+    
+        return response()->json($users); // Kembalikan hasil pencarian dalam format JSON
     }
 }

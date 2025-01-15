@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-4">
+<div class="container mt-4 col-6">
     <div class="card">
         <div class="card-header">
             <h5 class="card-title mb-0">Edit User</h5>
