@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruang Admin - @yield('title')</title>
+    <title>KasirKu</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/cart.png') }}">
     <!-- Tambahkan link CSS -->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
