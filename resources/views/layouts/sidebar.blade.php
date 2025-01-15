@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon">
         <img src="{{ asset('assets/img/logo/logo2.png') }}" alt="Logo">
     </div>
-    <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+    <div class="sidebar-brand-text mx-3">KasirKu</div>
 </a>
 
     
@@ -14,7 +14,7 @@
 
     <!-- Dashboard Link -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -32,8 +32,39 @@
             <span>Users</span>
         </a>
     </li>
+       <!-- Divider -->
+       <hr class="sidebar-divider">
 
-    <!-- Bootstrap UI -->
+    <div class="sidebar-heading">Pembelian</div>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="{{ route('users.index') }}">
+            <i class="fas fa-store text-dark"></i>
+            <span>Pembelian</span>
+        </a>
+    </li>
+
+       <!-- Divider -->
+       <hr class="sidebar-divider">
+    <div class="sidebar-heading">Penjualan</div>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="{{ route('users.index') }}">
+            <i class="fas fa-shopping-cart text-dark"></i>
+            <span>Penjualan</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">Stok</div>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="{{ route('users.index') }}">
+            <i class="fas fa-box text-dark"></i>
+            <span>Stok Barang</span>
+        </a>
+    </li>
+
   
 
    
