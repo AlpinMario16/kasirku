@@ -41,8 +41,8 @@
                 <div class="mb-3">
                     <label for="role" class="form-label">Role</label>
                     <select class="form-control" id="role" name="role" required>
-                        <option value="superadmin" {{ old('role') == 'superadmin' ? 'selected' : '' }}>Superadmin</option>
                         <option value="operator" {{ old('role') == 'operator' ? 'selected' : '' }}>Operator</option>
+                        <option value="superadmin" {{ old('role') == 'superadmin' ? 'selected' : '' }}>Superadmin</option>
                     </select>
                     @error('role')
                         <div class="text-danger">{{ $message }}</div>
