@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container-fluid">
-    <h1 class="h3 mb-4 text-gray-800">Halaman User</h1>
+    <h1 class="h3 mb-4 text-gray-800">Halaman Produk</h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar User</h6>
-            <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Tambah User</a>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Produk</h6>
+            <a href="{{ route('produks.create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
         </div>
 
         <div class="card-body">
@@ -18,7 +18,7 @@
             <i class="fas fa-search"></i> <!-- Ikon pencarian -->
         </span>
     </div>
-    <input type="text" id="searchInput" class="form-control" placeholder="Cari User..." aria-label="Cari User" aria-describedby="basic-addon1">
+    <input type="text" id="searchInput" class="form-control" placeholder="Cari Produk..." aria-label="Cari Produk" aria-describedby="basic-addon1">
 </div>
 
 
@@ -32,17 +32,17 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="usersTableBody">
-                        @foreach ($users as $user)
+                    <tbody id="produksTableBody">
+                        @foreach ($produks as $produk)
                         <tr>
                             <td>{{ $loop->iteration }}</td> <!-- Menampilkan nomor urut -->
-                            <td>{{ $user->name }}</td> <!-- Menampilkan nama -->
-                            <td>{{ $user->email }}</td> <!-- Menampilkan email -->
-                            <td>{{ ucfirst($user->role) }}</td> <!-- Menampilkan role dengan huruf pertama kapital -->
+                            <td>{{ $produk->name }}</td> <!-- Menampilkan nama -->
+                            <td>{{ $produk->email }}</td> <!-- Menampilkan email -->
+                            <td>{{ ucfirst($produk->role) }}</td> <!-- Menampilkan role dengan huruf pertama kapital -->
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm" onclick="confirmDelete('{{ $user->id }}')">Hapus</button>
-                                <form id="deleteForm-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: none;">
+                                <a href="{{ route('produks.edit', $produk->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <button class="btn btn-danger btn-sm" onclick="confirmDelete('{{ $produk->id }}')">Hapus</button>
+                                <form id="deleteForm-{{ $produk->id }}" action="{{ route('produks.destroy', $produk->id) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -55,7 +55,7 @@
                   <div class="d-flex justify-content-center mt-4"> 
     <div>
         <!-- Pagination rata tengah -->
-        {{ $users->links('pagination::bootstrap-4') }}
+        {{ $produks->links('pagination::bootstrap-4') }}
     </div>
 </div>
 
@@ -70,28 +70,28 @@
 <script>
     document.getElementById('searchInput').addEventListener('input', function() {
         let searchValue = this.value;
-        let searchUrl = "{{ route('users.search') }}?search=" + searchValue; // Pastikan URL benar
+        let searchUrl = "{{ route('produks.search') }}?search=" + searchValue; // Pastikan URL benar
 
         fetch(searchUrl)
             .then(response => response.json())
             .then(data => {
-                let usersTable = document.getElementById('usersTableBody');
-                usersTable.innerHTML = ''; // Hapus data lama
+                let produksTable = document.getElementById('produksTableBody');
+                produksTable.innerHTML = ''; // Hapus data lama
 
                 // Menambahkan data baru ke tabel
-                data.forEach(user => {
+                data.forEach(produk => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${user.id}</td>
-                        <td>${user.name}</td>
-                        <td>${user.email}</td>
-                        <td>${user.role}</td>
+                        <td>${produk.id}</td>
+                        <td>${produk.name}</td>
+                        <td>${produk.email}</td>
+                        <td>${produk.role}</td>
                         <td>
-                            <a href="/users/${user.id}/edit" class="btn btn-warning btn-sm">Edit</a>
-                            <button class="btn btn-danger btn-sm" onclick="confirmDelete('${user.id}')">Hapus</button>
+                            <a href="/produks/${produk.id}/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <button class="btn btn-danger btn-sm" onclick="confirmDelete('${produk.id}')">Hapus</button>
                         </td>
                     `;
-                    usersTable.appendChild(row);
+                    produksTable.appendChild(row);
                 });
             })
             .catch(error => console.error('Error:', error));
@@ -103,7 +103,7 @@
 
 <!-- SweetAlert untuk Konfirmasi Hapus -->
 <script>
-    function confirmDelete(userId) {
+    function confirmDelete(produkId) {
         Swal.fire({
             title: "Yakin ingin menghapus?",
             text: "Data ini tidak dapat dikembalikan lagi!",
@@ -116,7 +116,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // Kirim form untuk menghapus data
-                document.getElementById('deleteForm-' + userId).submit();
+                document.getElementById('deleteForm-' + produkId).submit();
 
                 // Tampilkan pesan sukses
                 Swal.fire({

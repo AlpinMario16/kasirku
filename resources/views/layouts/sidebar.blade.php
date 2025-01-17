@@ -35,12 +35,12 @@
        <!-- Divider -->
        <hr class="sidebar-divider">
 
-    <div class="sidebar-heading">Pembelian</div>
+    <div class="sidebar-heading">Supplier</div>
 
     <li class="nav-item">
-        <a class="nav-link text-dark" href="{{ route('users.index') }}">
-            <i class="fas fa-store text-dark"></i>
-            <span>Pembelian</span>
+        <a class="nav-link text-dark" href="{{ route('suppliers.index') }}">
+            <i class="fas fa-truck text-dark"></i>
+            <span>Supplier</span>
         </a>
     </li>
 
